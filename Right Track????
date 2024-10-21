@@ -47,8 +47,6 @@ def total_candies(jars):
 def game_over(jars):
     return all(candies == 0 for candies in jars)
 
-# I believe that I have to add Nim-Sum for the computer 
-# to make the human lose 70 percent of the time
 def nim_sim(jars): 
     result = 0 
     for candies in jars:
