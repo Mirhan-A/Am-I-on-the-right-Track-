@@ -1,0 +1,73 @@
+
+import random
+import time 
+
+#the welcoming to the game 
+
+print("Welcome to the game!")
+print("Booting game up...")
+time.sleep(5)
+
+# Game Instructions 
+def game_instruction(): 
+    print("Heres how you play this game.")
+    print("You and another person or a computer AI will take turns taking candy out of the jar.")
+    print("When it's your turn you can pick any jar you want and take as many candies as you want.") 
+    print("However you can only pick one jar during your turn and vise versa.")
+
+
+# Would ask if they are playing alone or with someone. 
+
+def player_names(): 
+    playing_alone = input("Are you playing alone? (Yes/No)")
+    player1 = input("What is your name? ")
+    if playing_alone == "Yes": 
+        player2 = "computer"
+    else: 
+        player2 = ("What is your name? ")
+    return player1, player2
+
+# Create the Piles and counters 
+
+# where it would return 6 jars (for the for loop) between 1 to 10 candies inside these jars
+def candy_jars():
+    return (random.randint(1,10) for _ in range(6))
+
+
+def displaying_jars(jars):
+    #Printing all the jars that are there
+    print("\nCurrent jars:")
+# Making a for loop to count the jars 
+    for i, count in range(jars, start=1):
+        print(f"jars {i}:{count} candies")
+
+def total_candies(jars): 
+    return sum(jars)
+
+def game_over(jars):
+    return all(candies == 0 for candies in jars)
+
+# I believe that I have to add Nim-Sum for the computer 
+# to make the human lose 70 percent of the time
+def nim_sim(jars): 
+    result = 0 
+    for candies in jars:
+        result ^= candies 
+        return result 
+    
+def computers_turn(jars):
+    print("Computers turn")
+    current_nim_sum = nim_sim(jars)
+    for jar in range(len(jar)):
+        if jars(jars) > 0:
+            new_count = jars(jars) ^ current_nim_sum 
+            if new_count < jars(jars): 
+                take_candies = jars(jars) - new_count
+                print(f"Computer removes {take_candies} candies from jar {jar + 1}")
+                (jars) -= take_candies
+                return 
+    full_jars = (i for i in range(len(jars)) if jars(i) > 0) 
+    jar = random.choice(full_jars)
+    candies = random.randint(1, jars(jars))
+    print(f"Computer removes {candies} from jar {jar + 1}")
+    jars(jars) -= candies
